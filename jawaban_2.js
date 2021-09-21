@@ -13,6 +13,7 @@ const kalkulator = {
 
 // Membuat fungsi Updating Display
 
+
 function updteDisplay() {
     console.log(kalkulator.angkaDisplay);
 }
