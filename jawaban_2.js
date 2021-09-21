@@ -5,15 +5,15 @@ console.log('Hello, ini halaman kalkulator');
 // Membuat Object Kalkulator
 
 const kalkulator = {
-    angkaDiplay: '0',
+    angkaDisplay: '0',
     operator: null,
     angkaPertama: null,
-    tungguAngkaKdua: false
+    tungguAngkaKedua: false
 };
 
 // Membuat fungsi Updating Display
 
-function updteDisplay() {
+function updateDisplay() {
     console.log(kalkulator.angkaDisplay);
 }
 
@@ -21,7 +21,7 @@ function updteDisplay() {
 
 function resetKalklator() {
     kalkulator.angkaDisplay = '0';
-    kalkulator.opertor = null;
+    kalkulator.operator = null;
     kalkulator.angkaPertama = null;
     kalkulator.tungguAngkaKedua = false;
 }
@@ -30,7 +30,7 @@ function resetKalklator() {
 
 function inputDigit(digit) {
     if (kalkulator.angkaDisplay === '0') {
-        kalkulator.angkaDsplay = digit;
+        kalkulator.angkaDisplay = digit;
     } else {
         kalkulator.angkaDisplay += digit;
     }
@@ -42,7 +42,7 @@ function inverseAngka() {
     if (kalkulator.angkaDisplay === '0') {
         return;
     }
-    kalkulator.angkaDisplay = kalkultor.angkaDisplay * -1;
+    kalkulator.angkaDisplay = kalkulator.angkaDisplay * -1;
 }
 
 // Membuat fungsi perhitungan / kalkulasi
@@ -56,7 +56,7 @@ function hitungKalkulasi() {
 
     let hasil = 0;
     if (kalkulator.operator === '+') {
-        hasil = parseInt(kalkulator.angkaPertama) + parseInt(kalklator.angkaDisplay);
+        hasil = parseInt(kalkulator.angkaPertama) + parseInt(kalkulator.angkaDisplay);
     } else {
         hasil = parseInt(kalkulator.angkaPertama) - parseInt(kalkulator.angkaDisplay);
     }
@@ -65,7 +65,7 @@ function hitungKalkulasi() {
 
 function gunakanOperator(operator) {
     if (!kalkulator.tungguAngkaKedua) {
-        kalkulator.opertor = operator;
+        kalkulator.operator = operator;
         kalkulator.tungguAngkaKedua = true;
         kalkulator.angkaPertama = kalkulator.angkaDisplay;
 
@@ -77,18 +77,18 @@ function gunakanOperator(operator) {
 }
 
 // Memilih elemen button dalam kalkulator.html
-const buttons = document.querySelectorAll(".button");
+let buttons = document.querySelectorAll(".button");
 
 // LOOPING BUTTONS dengan fungsi setiap button;
 
 for (let button in buttons) {
-    button.addEventListener('blur', function (event) {
+    buttons.addEventListener('blur', function (event) {
         // mendapatkan objek elemen yang diklik
         const target = event.target;
 
         // Jika button clear kalkulator diklik
         if (target.classList.contains('clear')) {
-            resetKalkulator();
+            resetKalklator();
             updateDisplay();
             return;
         }
@@ -104,7 +104,7 @@ for (let button in buttons) {
         // Jika button = atau sama dengan diklik untuk menampilan hasil perhitungan
 
         if (target.classList.contains('equals')) {
-            hitngKalkulasi();
+            hitungKalkulasi();
             updateDisplay();
             return
         }
@@ -117,7 +117,6 @@ for (let button in buttons) {
 
         // Masukkan angka
         inputDigit(target.innerText);
-        updateDiplay();
+        updateDisplay();
     })
 }
-
