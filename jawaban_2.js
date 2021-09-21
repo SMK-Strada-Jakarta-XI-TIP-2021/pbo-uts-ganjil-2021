@@ -13,13 +13,13 @@ const kalkulator = {
 
 // Membuat fungsi Updating Display
 
-function updteDisplay() {
+function updateDisplay() {
     console.log(kalkulator.angkaDisplay);
 }
 
 // Membuat fungsi reset display kalkulator
 
-function resetKalklator() {
+function resetKalkulator() {
     kalkulator.angkaDisplay = '0';
     kalkulator.opertor = null;
     kalkulator.angkaPertama = null;
@@ -98,7 +98,7 @@ for (let button in buttons) {
         if (target.classList.contains('negative')) {
             inverseAngka();
             updateDisplay();
-            return
+            return;
         }
 
         // Jika button = atau sama dengan diklik untuk menampilan hasil perhitungan
@@ -106,7 +106,7 @@ for (let button in buttons) {
         if (target.classList.contains('equals')) {
             hitngKalkulasi();
             updateDisplay();
-            return
+            return;
         }
 
         // Jika button operator +, -, *, / diklik
