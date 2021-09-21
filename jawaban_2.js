@@ -5,23 +5,23 @@ console.log('Hello, ini halaman kalkulator');
 // Membuat Object Kalkulator
 
 const kalkulator = {
-    angkaDiplay: '0',
+    angkaDisplay: '0',
     operator: null,
     angkaPertama: null,
-    tungguAngkaKdua: false
+    tungguAngkaKedua: false
 };
 
 // Membuat fungsi Updating Display
 
-function updteDisplay() {
+function updateDisplay() {
     console.log(kalkulator.angkaDisplay);
 }
 
 // Membuat fungsi reset display kalkulator
 
-function resetKalklator() {
+function resetKalkulator() {
     kalkulator.angkaDisplay = '0';
-    kalkulator.opertor = null;
+    kalkulator.operator = null;
     kalkulator.angkaPertama = null;
     kalkulator.tungguAngkaKedua = false;
 }
@@ -65,7 +65,7 @@ function hitungKalkulasi() {
 
 function gunakanOperator(operator) {
     if (!kalkulator.tungguAngkaKedua) {
-        kalkulator.opertor = operator;
+        kalkulator.operator = operator;
         kalkulator.tungguAngkaKedua = true;
         kalkulator.angkaPertama = kalkulator.angkaDisplay;
 
@@ -104,7 +104,7 @@ for (let button in buttons) {
         // Jika button = atau sama dengan diklik untuk menampilan hasil perhitungan
 
         if (target.classList.contains('equals')) {
-            hitngKalkulasi();
+            hitungKalkulasi();
             updateDisplay();
             return
         }
@@ -117,7 +117,7 @@ for (let button in buttons) {
 
         // Masukkan angka
         inputDigit(target.innerText);
-        updateDiplay();
+        updateDisplay();
     })
 }
 
