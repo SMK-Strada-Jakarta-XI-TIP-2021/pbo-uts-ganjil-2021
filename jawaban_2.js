@@ -5,24 +5,33 @@ console.log('Hello, ini halaman kalkulator');
 // Membuat Object Kalkulator
 
 const kalkulator = {
-    angkaDiplay: '0',
+    angkaDisplay: '0',
     operator: null,
     angkaPertama: null,
     tungguAngkaKdua: false
 };
 
 // Membuat fungsi Updating Display
-
-
-function updteDisplay() {
+function updateDisplay() {
     console.log(kalkulator.angkaDisplay);
+    var p = {
+        "p1": "value1",
+        "p2": "value2",
+        "p3": "value3"
+    };
+    
+    for (var key in p) {
+        if (p.hasOwnProperty(key)) {
+            console.log(key + " -> " + p[key]);
+        }
+    }
 }
 
 // Membuat fungsi reset display kalkulator
 
-function resetKalklator() {
+function resetKalkulator() {
     kalkulator.angkaDisplay = '0';
-    kalkulator.opertor = null;
+    kalkulator.operator = null;
     kalkulator.angkaPertama = null;
     kalkulator.tungguAngkaKedua = false;
 }
@@ -78,7 +87,7 @@ function gunakanOperator(operator) {
 }
 
 // Memilih elemen button dalam kalkulator.html
-const buttons = document.querySelectorAll(".button");
+const button = document.querySelectorAll(".buttons");
 
 // LOOPING BUTTONS dengan fungsi setiap button;
 
@@ -116,9 +125,13 @@ for (let button in buttons) {
             return;
         }
 
-        // Masukkan angka
+        // Masukkan angka4
         inputDigit(target.innerText);
         updateDiplay();
     })
 }
 
+function Pegawai(nama, id) {
+    this.nama = nama;
+    this.id = id;
+}
