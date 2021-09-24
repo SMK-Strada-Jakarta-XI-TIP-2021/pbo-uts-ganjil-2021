@@ -8,41 +8,41 @@ const kalkulator = {
     angkaDiplay: '0',
     operator: null,
     angkaPertama: null,
-    tungguAngkaKdua: false
+    tungguAngkaKdua: false,
 };
 
 // Membuat fungsi Updating Display
 
 function updteDisplay() {
-    console.log(kalkulator.angkaDisplay);
+    console.log(kalkulator.angkaDiplay);
 }
 
 // Membuat fungsi reset display kalkulator
 
 function resetKalklator() {
-    kalkulator.angkaDisplay = '0';
-    kalkulator.opertor = null;
+    kalkulator.angkaDiplay = '0';
+    kalkulator.operator = null;
     kalkulator.angkaPertama = null;
-    kalkulator.tungguAngkaKedua = false;
+    kalkulator.tungguAngkaKdua = false;
 }
 
 // Membuat fungsi menginput angka
 
 function inputDigit(digit) {
-    if (kalkulator.angkaDisplay === '0') {
-        kalkulator.angkaDsplay = digit;
+    if (kalkulator.angkaDiplay === '0') {
+        kalkulator.angkaDiplay = digit;
     } else {
-        kalkulator.angkaDisplay += digit;
+        kalkulator.angkaDiplay += digit;
     }
 }
 
 // Membuat fungsi input angka menjadi negatif atau positif
 
 function inverseAngka() {
-    if (kalkulator.angkaDisplay === '0') {
+    if (kalkulator.angkaDiplay === '0') {
         return;
     }
-    kalkulator.angkaDisplay = kalkultor.angkaDisplay * -1;
+    kalkulator.angkaDiplay = kalkulator.angkaDiplay * -1;
 }
 
 // Membuat fungsi perhitungan / kalkulasi
@@ -56,21 +56,21 @@ function hitungKalkulasi() {
 
     let hasil = 0;
     if (kalkulator.operator === '+') {
-        hasil = parseInt(kalkulator.angkaPertama) + parseInt(kalklator.angkaDisplay);
+        hasil = parseInt(kalkulator.angkaPertama) + parseInt(kalkulator.angkaDiplay);
     } else {
-        hasil = parseInt(kalkulator.angkaPertama) - parseInt(kalkulator.angkaDisplay);
+        hasil = parseInt(kalkulator.angkaPertama) - parseInt(kalkulator.angkaDiplay);
     }
-    kalkulator.angkaDisplay = hasil;
+    kalkulator.angkaDiplay = hasil;
 }
 
 function gunakanOperator(operator) {
-    if (!kalkulator.tungguAngkaKedua) {
-        kalkulator.opertor = operator;
-        kalkulator.tungguAngkaKedua = true;
+    if (!kalkulator.tungguAngkaKdua) {
+        kalkulator.operator = operator;
+        kalkulator.tungguAngkaKdua = true;
         kalkulator.angkaPertama = kalkulator.angkaDisplay;
 
         // Mengatur ulang nilai angka display supaya button selanjutnya dimulai dari angka pertama lagi
-        kalkulator.angkaDisplay = '0';
+        kalkulator.angkaDiplay = '0';
     } else {
         console.log('Operator sudah ditetapkan');
     }
@@ -82,14 +82,14 @@ const buttons = document.querySelectorAll(".button");
 // LOOPING BUTTONS dengan fungsi setiap button;
 
 for (let button in buttons) {
-    button.addEventListener('blur', function (event) {
+    buttonaddEventListener('blur', function (event) {
         // mendapatkan objek elemen yang diklik
         const target = event.target;
 
         // Jika button clear kalkulator diklik
         if (target.classList.contains('clear')) {
-            resetKalkulator();
-            updateDisplay();
+            resetKalklator();
+            updteDisplay();
             return;
         }
 
@@ -97,16 +97,16 @@ for (let button in buttons) {
 
         if (target.classList.contains('negative')) {
             inverseAngka();
-            updateDisplay();
-            return
+            updteDisplay();
+            return;
         }
 
         // Jika button = atau sama dengan diklik untuk menampilan hasil perhitungan
 
         if (target.classList.contains('equals')) {
-            hitngKalkulasi();
-            updateDisplay();
-            return
+            hitungKalkulasi();
+            updteDisplay();
+            return;
         }
 
         // Jika button operator +, -, *, / diklik
@@ -117,6 +117,6 @@ for (let button in buttons) {
 
         // Masukkan angka
         inputDigit(target.innerText);
-        updateDiplay();
+        updteDisplay();
     })
 }
